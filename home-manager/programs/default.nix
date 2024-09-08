@@ -3,5 +3,6 @@
     ./pass
     ./kitty
     ./tmux
+    ./neovim
   ];
 }
