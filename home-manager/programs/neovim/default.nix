@@ -3,6 +3,9 @@
 {
   programs.neovim = {
     enable = true;
+    viAlias = true;
+    vimAlias = true;
+    defaultEditor = true;
     extraConfig = ''
     lua << END
 -- Line numbers
@@ -31,6 +34,12 @@ vim.opt.scrolloff = 999
 
 vim.opt.cc = "80"
 
+vim.opt.termguicolors = true
+
+-- No background
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+
 vim.g.mapleader = " "
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
@@ -46,7 +55,9 @@ vim.keymap.set('n', '<c-h>', ':wincmd h<CR>')
 vim.keymap.set('n', '<c-l>', ':wincmd l<CR>')
     ''; 
     plugins = with pkgs.vimPlugins; [
-      nvim-treesitter-parser.go
+      nvim-treesitter
+      nvim-treesitter-parsers.go
+      vim-tmux-navigator
     ];
   };
 }
