@@ -10,8 +10,6 @@
   home.homeDirectory = "/home/momiji";
   home.stateVersion = "24.05"; 
 
-  programs.neovim = inputs.momiji-nvim.lib.mkHomeManager {inherit system;};
-
   home.packages = with pkgs; [
     kitty
     firefox
