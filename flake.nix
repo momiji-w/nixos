@@ -7,8 +7,6 @@
 
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    momiji-nvim.url = "github:momiji-w/nvim";
   };
 
   outputs = {
