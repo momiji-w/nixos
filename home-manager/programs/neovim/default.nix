@@ -3,9 +3,6 @@
 {
   programs.neovim = {
     enable = true;
-    viAlias = true;
-    vimAlias = true;
-    defaultEditor = true;
     extraConfig = ''
     lua << END
 -- Line numbers
@@ -33,12 +30,6 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 999
 
 vim.opt.cc = "80"
-
-vim.opt.termguicolors = true
-
--- No background
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
 vim.g.mapleader = " "
 

@@ -26,7 +26,7 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    # xwayland.enable = true;
+    xwayland.enable = true;
     extraConfig = ''
       ################
       ### MONITORS ###
@@ -67,6 +67,9 @@
       #############################
       
       # See https://wiki.hyprland.org/Configuring/Environment-variables/
+      
+      env = XCURSOR_SIZE,32
+      env = HYPRCURSOR_SIZE,32
       
       #####################
       ### LOOK AND FEEL ###
@@ -155,7 +158,7 @@
           kb_layout = us, la
           kb_variant =
           kb_model =
-          kb_options = grp:win_space_toggle
+          kb_options = grp:ctrls_toggle
           kb_rules =
       
           follow_mouse = 1

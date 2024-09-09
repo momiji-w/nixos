@@ -3,7 +3,7 @@
     ./pass
     ./kitty
     ./tmux
-    # ./neovim
+    ./neovim
     ./git
   ];
 }

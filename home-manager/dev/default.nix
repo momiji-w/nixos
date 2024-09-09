@@ -2,7 +2,8 @@
 
 {
   home.packages = with pkgs; [
+    python
     go
-    python3
+    rust
   ];
 }

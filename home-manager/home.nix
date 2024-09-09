@@ -3,7 +3,6 @@
 {
   imports = [ 
     ./DE
-    ./dev
     ./programs
   ];
 
@@ -27,7 +26,12 @@
     kanata
     
     xfce.thunar
+    freerdp3
   ];
+
+  home.sessionVariables = {
+    EDITOR = "vim";
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
