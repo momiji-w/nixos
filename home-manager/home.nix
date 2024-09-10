@@ -4,6 +4,7 @@
   imports = [ 
     ./DE
     ./programs
+    ./dev
   ];
 
   home.username = "momiji";
@@ -20,16 +21,9 @@
     htop
 
     p7zip
-    git
-    kanata
     
     xfce.thunar
-    freerdp3
   ];
-
-  home.sessionVariables = {
-    EDITOR = "vim";
-  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
