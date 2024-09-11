@@ -3,7 +3,7 @@
     ./pass
     ./kitty
     ./tmux
-    ./neovim
+    ./nixvim
     ./git
     ./helix
   ];
