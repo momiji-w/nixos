@@ -5,5 +5,6 @@
     ./tmux
     ./neovim
     ./git
+    ./helix
   ];
 }
