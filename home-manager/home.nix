@@ -1,10 +1,13 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [ 
     ./DE
-    ./programs
-    ./dev
+    ./nixvim
+    ./git
+    ./pass
+    ./kitty
+    ./tmux
   ];
 
   home.username = "momiji";
@@ -18,11 +21,14 @@
 
     pamixer
     pavucontrol
+    xfce.thunar
     htop
 
     p7zip
-    
-    xfce.thunar
+
+    python311
+    go
+    android-tools
   ];
 
   # Let Home Manager install and manage itself.
