@@ -25,9 +25,9 @@
     htop
 
     p7zip
+    fzf
 
     python311
-    go
     android-tools
   ];
 

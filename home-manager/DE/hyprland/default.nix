@@ -7,6 +7,7 @@
     hyprlock
     hyprshot
     wl-clipboard
+    xwayland
   ];
   
   xdg.portal.enable = true;
@@ -26,7 +27,7 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    # xwayland.enable = true;
+    xwayland.enable = true;
     extraConfig = ''
       ################
       ### MONITORS ###

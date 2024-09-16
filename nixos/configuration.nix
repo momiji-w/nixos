@@ -51,6 +51,8 @@
 
   programs.virt-manager.enable = true;
 
+  security.polkit.enable = true;
+
   # Enable sound.
   hardware.pulseaudio.enable = true;
   programs.noisetorch.enable = true;
@@ -80,9 +82,10 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  programs.light.enable = true;
   users.users.momiji = {
     isNormalUser = true;
-    extraGroups = [ "networkmanger" "libvirtd" "wheel" ];
+    extraGroups = [ "video" "networkmanager" "libvirtd" "wheel" ];
   };
 
   # List packages installed in system profile. To search, run:
