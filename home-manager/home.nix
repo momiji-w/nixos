@@ -3,8 +3,7 @@
 {
   imports = [ 
     ./DE
-    #./nixvim
-    ./neovim
+    ./nixvim
     ./git
     ./pass
     ./kitty

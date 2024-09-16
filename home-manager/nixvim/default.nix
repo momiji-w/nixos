@@ -140,6 +140,8 @@
         key ="<leader>fr";
         action = ":Telescope lsp_references<CR>";
       }
+
+      # lazygit
       {
         mode = "n";
         key ="<leader>gg";
