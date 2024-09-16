@@ -5,15 +5,46 @@
       telescope.enable = true;
       treesitter.enable = true;
       lazygit.enable = true;
+      lsp-format.enable = true;
 
       harpoon = {
         enable = true;
         enableTelescope = true;
+
+        keymapsSilent = true;
+
+        keymaps = {
+          addFile = "<leader>a";
+          toggleQuickMenu = "<C-e>";
+          navFile = {
+            "1" = "<C-h>";
+            "2" = "<C-t>";
+            "3" = "<C-n>";
+            "4" = "<C-s>";
+          };
+        };
       };
     };
 
     plugins.lsp = {
       enable = true;
+      keymaps = {
+        silent = true;
+        diagnostic = {
+          # Navigate in diagnostics
+          "[d" = "goto_next";
+          "]d" = "goto_prev";
+        };
+
+        lspBuf = {
+          "<leader>gd" = "definition";
+          "<leader>rr" = "references";
+          "<leader>rn" = "rename";
+          "<leader>gt" = "type_definition";
+          "<leader>gi" = "implementation";
+          K = "hover";
+        };
+      };
       servers = {
         nil-ls.enable = true;
       };

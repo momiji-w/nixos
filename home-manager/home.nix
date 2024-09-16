@@ -1,9 +1,10 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [ 
     ./DE
-    ./nixvim
+    #./nixvim
+    ./neovim
     ./git
     ./pass
     ./kitty
