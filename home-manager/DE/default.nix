@@ -1,7 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  imports = [ ./sway ./hyprland ./dunst];
+  imports = [ ./sway ];
 
   gtk = {
     enable = true;
