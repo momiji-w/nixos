@@ -2,10 +2,9 @@
   description = "momiji's nixos flakes";
 
   inputs = {
-    nixpkgs.url          = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
+    home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nixvim = {
@@ -17,7 +16,6 @@
   outputs = {
     self,
     nixpkgs,
-    nixpkgs-unstable,
     home-manager,
     ...
   } @ inputs: let
@@ -25,15 +23,7 @@
   in {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = let 
-          pkgs-unstable = import nixpkgs-unstable {
-            config.allowUnfree = true;
-            localSystem = "x86_64-linux";
-          };
-        in {
-          inherit inputs outputs;
-          inherit pkgs-unstable;
-        };
+        inherit inputs outputs;
         # > Our main nixos configuration file <
         modules = [./nixos/configuration.nix];
       };

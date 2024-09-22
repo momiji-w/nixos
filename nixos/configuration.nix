@@ -1,4 +1,4 @@
-{ config, lib, pkgs, pkgs-unstable, ... }: {
+{ pkgs, ... }: {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -7,12 +7,6 @@
   nixpkgs = {
     # Allow unfree packages
     config.allowUnfree = true;
-    
-    overlays = [
-      (final: prev: {
-        unstable = pkgs-unstable;
-      })
-    ];
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

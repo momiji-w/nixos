@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [ 
@@ -14,9 +14,13 @@
   home.homeDirectory = "/home/momiji";
   home.stateVersion = "24.05"; 
 
+  nixpkgs.config.allowUnfree = true;
+
   home.packages = with pkgs; [
     kitty
     firefox
+    chromium
+    spotify
     wget
 
     pamixer
