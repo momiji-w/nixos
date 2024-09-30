@@ -10,6 +10,6 @@
       fonts = [ "JetBrainsMono" ];
     };
     font.name = "JetBrains Mono Nerd Font";
-    font.size = 14;
+    font.size = 18;
   };
 }

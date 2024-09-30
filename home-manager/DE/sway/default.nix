@@ -20,7 +20,7 @@
             keybindings = let modifier = config.wayland.windowManager.sway.config.modifier;
             in lib.mkOptionDefault {
                 "${modifier}+Shift+Ctrl+l" = "exec hyprlock";
-                "${modifier}+Shift+n" = "exec swaync-client -t -sw";
+                "${modifier}+Shift+n" = "exec adb shell am start -a android.intent.action.VIEW -d $(wl-paste)";
             };
             input = {
                 "type:touchpad" = {

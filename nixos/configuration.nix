@@ -79,7 +79,7 @@
   programs.light.enable = true;
   users.users.momiji = {
     isNormalUser = true;
-    extraGroups = [ "video" "networkmanager" "libvirtd" "wheel" ];
+    extraGroups = [ "adbusers" "video" "networkmanager" "libvirtd" "wheel" ];
   };
 
   # List packages installed in system profile. To search, run:
