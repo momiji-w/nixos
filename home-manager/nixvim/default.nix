@@ -11,7 +11,6 @@
     '';
 
     plugins = {
-      tmux-navigator.enable = true;
       telescope.enable = true;
       treesitter.enable = true;
       lazygit.enable = true;

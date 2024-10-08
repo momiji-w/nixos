@@ -30,9 +30,11 @@
 
     p7zip
     fzf
+    koodo-reader
 
     python311
     android-tools
+    scrcpy
   ];
 
   # Let Home Manager install and manage itself.
