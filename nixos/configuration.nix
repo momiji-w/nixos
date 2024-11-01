@@ -42,6 +42,7 @@
   };
 
   hardware.graphics.enable = true;
+  hardware.bluetooth.enable = true;
 
   programs.virt-manager.enable = true;
 
@@ -92,7 +93,7 @@
   fonts.packages = with pkgs; [
     ubuntu_font_family
     noto-fonts
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     noto-fonts-emoji
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];

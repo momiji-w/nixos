@@ -16,11 +16,23 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  xdg.portal = {
+    enable = true;
+    config = {
+      common = {
+        default = [
+          "wlr"
+        ];
+      };
+    };
+    extraPortals = [
+      pkgs.xdg-desktop-portal-wlr
+    ];
+  };
+
   home.packages = with pkgs; [
     kitty
     firefox
-    chromium
-    spotify
     wget
 
     pamixer
@@ -31,6 +43,8 @@
     p7zip
     fzf
     koodo-reader
+    mdbook
+    marp-cli
 
     python311
     android-tools

@@ -5,10 +5,13 @@
         wofi
         wl-clipboard
         swaynotificationcenter
+        swaybg
         hyprlock
+        hyprshot
     ];
     wayland.windowManager.sway = {
         enable = true;
+        systemd.enable = true;
         config = {
             modifier = "Mod4";
             terminal = "kitty"; 
@@ -21,6 +24,7 @@
             in lib.mkOptionDefault {
                 "${modifier}+Shift+Ctrl+l" = "exec hyprlock";
                 "${modifier}+Shift+n" = "exec adb shell am start -a android.intent.action.VIEW -d $(wl-paste)";
+                "${modifier}+Shift+s" = "exec hyprshot -m region --clipboard-only";
             };
             input = {
                 "type:touchpad" = {
