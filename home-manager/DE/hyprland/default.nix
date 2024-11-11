@@ -1,31 +1,36 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./waybar ];
-  home.packages = with pkgs; [ 
-    waybar
-    wofi
-    hyprlock
-    hyprshot
-    wl-clipboard
-    xwayland
-  ];
-  
-  home = {
-    sessionVariables = {
-      WLR_NO_HARDWARE_CURSORS = "1";
-      NIXOS_OZONE_WL = "1";
+    imports = [
+        ./waybar.nix
+        ./hyprpaper.nix
+    ];
 
-      XDG_CURRENT_DESKTOP = "Hyprland";
-      XDG_SESSION_DESKTOP = "Hyprland";
-      XDG_SESSION_TYPE = "wayland";
+    home.packages = with pkgs; [ 
+        waybar
+        wofi
+        hyprlock
+        hyprshot
+        hyprpaper
+        wl-clipboard
+        xwayland
+    ];
+
+    home = {
+        sessionVariables = {
+            WLR_NO_HARDWARE_CURSORS = "1";
+            NIXOS_OZONE_WL = "1";
+
+            XDG_CURRENT_DESKTOP = "Hyprland";
+            XDG_SESSION_DESKTOP = "Hyprland";
+            XDG_SESSION_TYPE = "wayland";
+        };
     };
-  };
 
-  wayland.windowManager.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-    extraConfig = ''
+    wayland.windowManager.hyprland = {
+        enable = true;
+        xwayland.enable = true;
+        extraConfig = ''
       ################
       ### MONITORS ###
       ################
@@ -264,5 +269,5 @@
       
       windowrulev2 = suppressevent maximize, class:.* # You'll probably like this.
       '';
-  };
+    };
 }

@@ -1,132 +1,104 @@
 { config, lib, pkgs, ... }:
 
 {
-    program.waybar = {
+    programs.waybar = {
+        enable = true;
         settings = {
-            position = "top";
-            modules-left = ["hyprland/workspaces"];
-            modules-center = ["hyprland/window"];
-            modules-right = ["network" "battery" "clock" "tray"];
+            mainBar = {
+                position = "top";
+                modules-left = ["hyprland/workspaces"];
+                modules-center = ["hyprland/window"];
+                modules-right = ["network" "battery" "clock" "tray"];
 
-            tray = {
-                icon-size = 21;
-                spacing = 10;
-            };
-            clock = {
-                format = "{:%I:%M %p}";
-                format-alt = "{:%Y-%m-%d}";
-
-            };
-            cpu = {
-                format = "{usage}% ";
-                tooltip = false;
-            };
-            memory = {
-                format = "{}% ";
-            };
-            temperature = {
-                critical-threshold = 80;
-                format = "{temperatureC}°C {icon}";
-                format-icons = ["" "" ""];
-            };
-            backlight = {
-                format = "{percent}% ";
-                format-icons = ["" ""];
-            };
-            battery = {
-                states = {
-                    good = 95;
-                    warning = 30;
-                    critical = 15;
+                tray = {
+                    icon-size = 21;
+                    spacing = 10;
                 };
-                format = "BAT {capacity}% ";
-                format-charging = "BAT󱐋 {capacity}%";
-                format-plugged = "BAT {capacity}%";
+                clock = {
+                    format = "{:%I:%M %p}";
+                    format-alt = "{:%Y-%m-%d}";
+
+                };
+                cpu = {
+                    format = "{usage}% ";
+                    tooltip = false;
+                };
+                memory = {
+                    format = "{}% ";
+                };
+                temperature = {
+                    critical-threshold = 80;
+                    format = "{temperatureC}°C {icon}";
+                    format-icons = ["" "" ""];
+                };
+                backlight = {
+                    format = "{percent}% ";
+                    format-icons = ["" ""];
+                };
+                battery = {
+                    states = {
+                        good = 95;
+                        warning = 30;
+                        critical = 15;
+                    };
+                    format = "BAT {capacity}% ";
+                    format-charging = "BAT󱐋 {capacity}%";
+                    format-plugged = "BAT {capacity}%";
+                };
+                "battery#bat2" = {
+                    bat = "BAT2";
+                };
+                network = {
+                    format-wifi = "WIFI {essid} ({signalStrength}%)";
+                    format-ethernet = "LAN {ifname}: {ipaddr}/{cidr}";
+                    format-linked = "{ifname} (No IP)";
+                    format-disconnected = "Disconnected";
+                    format-alt = "{ifname}: {ipaddr}/{cidr}";
+                };
+                pulseaudio = {
+                    format = "{volume}%  {format_source}";
+                    format-muted = " {format_source}";
+                    format-source = "{volume}% 󰕾";
+                    format-source-muted = "";
+                    on-click = "pavucontrol";
+                };
             };
-            battery = {
-                bat = "BAT2";
             };
-            network = {
-                format-wifi = "WIFI {essid} ({signalStrength}%)";
-                format-ethernet = "LAN {ifname}: {ipaddr}/{cidr}";
-                format-linked = "{ifname} (No IP)";
-                format-disconnected = "Disconnected";
-                format-alt = "{ifname}: {ipaddr}/{cidr}";
-            };
-            pulseaudio = {
-                format = "{volume}%  {format_source}";
-                format-muted = " {format_source}";
-                format-source = "{volume}% 󰕾";
-                format-source-muted = "";
-                on-click = "pavucontrol";
-            };
-        };
         style = ''
-        * {
-    border: none;
-    border-radius: 0px;
-    /* `ttf-font-awesome` is required to be installed for icons */
-    font-family: "JetBrains Mono", sans-serif;
+            * {
+border: none;
+        border-radius: 0px;
+        font-family: "JetBrains Mono", sans-serif;
 
-    /* adjust font-size value to your liking: */
-    font-size: 14px;
+        /* adjust font-size value to your liking: */
+        font-size: 14px;
 
-    min-height: 0;
-}
+        min-height: 0;
+            }
 
-window#waybar {
-    background-color: rgba(0, 0, 0, 0.9);
-    /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
-    color: #ffffff;
-    /* transition-property: background-color; */
-    /* transition-duration: .5s; */
-    /* border-radius: 0; */
-}
-
-/* window#waybar.hidden {
-    opacity: 0.2;
-} */
-
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
-
-/* window#waybar.termite {
-    background-color: #000000;
-}
-
-window#waybar.chromium {
-    background-color: #000000;
-    border: none;
-} */
+        window#waybar {
+            background-color: rgba(0, 0, 0, 0.9);
+color: #ffffff;
+        }
 
 #workspaces button {
-    /* padding: 0 0.4em; */
-    /* background-color: transparent; */
-    color: #ffffff;
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
+color: #ffffff;
+       box-shadow: inset 0 -3px transparent;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.9);
-    box-shadow: inset 0 -3px #ffffff;
+background: rgba(0, 0, 0, 0.9);
+            box-shadow: inset 0 -3px #ffffff;
 }
 
 #workspaces button.active {
-    background: rgba(0, 0, 0, 0.9);
-    box-shadow: inset 0 -3px #ffffff;
+background: rgba(0, 0, 0, 0.9);
+            box-shadow: inset 0 -3px #ffffff;
 }
 
 #workspaces button.focused {
     background-color: #64727D;
-    /* box-shadow: inset 0 -3px #ffffff; */
 }
 
 #workspaces button.urgent {
@@ -135,7 +107,6 @@ window#waybar.chromium {
 
 #mode {
     background-color: #64727D;
-    /* border-bottom: 3px solid #ffffff; */
 }
 
 #clock,
@@ -151,14 +122,14 @@ window#waybar.chromium {
 #mode,
 #idle_inhibitor,
 #mpd {
-    padding: 0 10px;
-    margin: 6px 3px; 
-    color: #000000;
+padding: 0 10px;
+margin: 6px 3px; 
+color: #000000;
 }
 
 #window,
 #workspaces {
-    margin: 0 4px;
+margin: 0 4px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -173,58 +144,58 @@ window#waybar.chromium {
 
 #clock {
     background-color: #000000;
-    color: white;
+color: white;
 }
 
 #battery {
     background-color: #000000;
-    color: white;
+color: white;
 }
 
 #battery.charging {
-    color: #ffffff;
-    background-color: #000000;
+color: #ffffff;
+       background-color: #000000;
 }
 
 @keyframes blink {
     to {
         background-color: #ffffff;
-        color: #000000;
+color: #000000;
     }
 }
 
 #battery.critical:not(.charging) {
     background-color: #f53c3c;
-    color: #ffffff;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+color: #ffffff;
+       animation-name: blink;
+       animation-duration: 0.5s;
+       animation-timing-function: linear;
+       animation-iteration-count: infinite;
+       animation-direction: alternate;
 }
 
 label:focus {
-    background-color: #000000;
-}
+          background-color: #000000;
+      }
 
 #cpu {
     background-color: #000000;
-    color: #ffffff;
+color: #ffffff;
 }
 
 #memory {
     background-color: #000000;
-    color: white;
+color: white;
 }
 
 #backlight {
     background-color: #000000;
-    color:white;
+color:white;
 }
 
 #network {
     background-color: #000000;
-    color:white;
+color:white;
 
 }
 
@@ -234,18 +205,18 @@ label:focus {
 
 #pulseaudio {
     background-color: #000000;
-    color: #ffffff;
+color: #ffffff;
 }
 
 #pulseaudio.muted {
     background-color: #000000;
-    color: #ffffff;
+color: #ffffff;
 }
 
 #custom-media {
     background-color: #66cc99;
-    color: #2a5c45;
-    min-width: 100px;
+color: #2a5c45;
+       min-width: 100px;
 }
 
 #custom-media.custom-spotify {
@@ -274,12 +245,12 @@ label:focus {
 
 #idle_inhibitor.activated {
     background-color: #ecf0f1;
-    color: #2d3436;
+color: #2d3436;
 }
 
 #mpd {
     background-color: #66cc99;
-    color: #2a5c45;
+color: #2a5c45;
 }
 
 #mpd.disconnected {
@@ -295,11 +266,11 @@ label:focus {
 }
 
 #language {
-    background: #bbccdd;
-    color: #333333;
-    padding: 0 5px;
-    margin: 6px 3px;
-    min-width: 16px;
+background: #bbccdd;
+color: #333333;
+padding: 0 5px;
+margin: 6px 3px;
+        min-width: 16px;
 }
 '';
     };
