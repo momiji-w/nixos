@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [ ./waybar ];
   home.packages = with pkgs; [ 
     waybar
     wofi
@@ -10,10 +11,6 @@
     xwayland
   ];
   
-  xdg.portal.enable = true;
-  xdg.portal.config.common.default = "*";
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
- 
   home = {
     sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";

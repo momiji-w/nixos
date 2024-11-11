@@ -49,7 +49,17 @@
   security.polkit.enable = true;
 
   # Enable sound.
-  hardware.pulseaudio.enable = true;
+  # hardware.pulseaudio.enable = true;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+  };
+
   programs.noisetorch.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -76,8 +86,8 @@
     };
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   programs.light.enable = true;
+  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.momiji = {
     isNormalUser = true;
     extraGroups = [ "adbusers" "video" "networkmanager" "libvirtd" "wheel" ];
@@ -139,7 +149,10 @@
   };
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 8000 ];
+  };
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
@@ -167,6 +180,5 @@
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }
 

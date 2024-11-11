@@ -47,6 +47,8 @@
     marp-cli
 
     python311
+    go
+    nodejs_22
     android-tools
     scrcpy
   ];
