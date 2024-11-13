@@ -1,58 +1,62 @@
 { pkgs, ... }:
 
 {
-  imports = [ 
-    ./DE
-    ./nixvim
-    ./git
-    ./pass
-    ./kitty
-    ./tmux
-  ];
-
-  home.username = "momiji";
-  home.homeDirectory = "/home/momiji";
-  home.stateVersion = "24.05"; 
-
-  nixpkgs.config.allowUnfree = true;
-
-  xdg.portal = {
-    enable = true;
-    config = {
-      common = {
-        default = [
-          "wlr"
-        ];
-      };
-    };
-    extraPortals = [
-      pkgs.xdg-desktop-portal-wlr
+    imports = [ 
+        ./DE
+        ./nixvim
+        ./git
+        ./pass
+        ./kitty
+        ./tmux
+        ./fish
     ];
-  };
 
-  home.packages = with pkgs; [
-    kitty
-    firefox
-    wget
+    home.username = "momiji";
+    home.homeDirectory = "/home/momiji";
+    home.stateVersion = "24.05"; 
 
-    pamixer
-    pavucontrol
-    xfce.thunar
-    htop
+    nixpkgs.config.allowUnfree = true;
 
-    p7zip
-    fzf
-    koodo-reader
-    mdbook
-    marp-cli
+    xdg.portal = {
+        enable = true;
+        config = {
+            common = {
+                default = [
+                    "wlr"
+                ];
+            };
+        };
+        extraPortals = [
+            pkgs.xdg-desktop-portal-wlr
+        ];
+    };
 
-    python311
-    go
-    nodejs_22
-    android-tools
-    scrcpy
-  ];
+    home.packages = with pkgs; [
+        kitty
+        firefox
+        wget
+        koodo-reader
+        ncspot
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+        pamixer
+        pavucontrol
+        xfce.thunar
+        htop
+        pfetch
+
+        p7zip
+        fzf
+        toybox
+        mdbook
+        marp-cli
+
+        python311
+        go
+        nodejs_22
+        android-tools
+        scrcpy
+    ];
+
+    # Let Home Manager install and manage itself.
+    programs.home-manager.enable = true;
 }

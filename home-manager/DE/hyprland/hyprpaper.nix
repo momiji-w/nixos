@@ -1,10 +1,11 @@
-{} :
+{ config, pkgs, ... }:
+
 {
     services.hyprpaper = {
         enable = true;
         settings = {
-            preload = [ "~/Downloads/yunayu_bocchi.jpg" ];
-            wallpaper = [ ", ~/Downloads/yunayu_bocchi.jpg" ];
+            preload = [ "~/Downloads/mikyu.png" "~/Downloads/miku_pixel.jpg" "~/Downloads/cool_sana.jpg"];
+            wallpaper = [ ", ~/Downloads/mikyu.png" ];
         };
     };
 }

@@ -88,7 +88,9 @@
 
   programs.light.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  programs.fish.enable = true;
   users.users.momiji = {
+    shell = pkgs.fish;
     isNormalUser = true;
     extraGroups = [ "adbusers" "video" "networkmanager" "libvirtd" "wheel" ];
   };
@@ -121,17 +123,14 @@
     keyboards = {
       "lap".config = ''
 (defsrc
-  caps h j k l
+  caps h j k l 
 )
-
 (defalias
   esctog (tap-hold 100 100 esc (layer-toggle vi))
 )
-
 (deflayer base
   @esctog h j k l
 )
-
 (deflayer vi
   XX lft down up rght
 )
