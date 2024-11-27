@@ -36,6 +36,7 @@
         firefox
         wget
         koodo-reader
+        lf
         ncspot
 
         pamixer

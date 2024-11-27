@@ -101,16 +101,18 @@
             };
             "$mainMod" = "SUPER";
             "$screenshot" = "hyprshot -m region --clipboard-only";
+            "$screenshot_whole" = "hyprshot -m output -o ~/Screenshots";
             "$lock" = "hyprlock";
             bind = [
                 "$mainMod, Return, exec, $terminal"
-                "$mainMod, C, killactive,"
+                "$mainMod, Q, killactive,"
                 "$mainMod, F, fullscreen,"
-                "$mainMod, M, exit,"
+                "$mainMod&SHIFT_L, M, exit,"
                 "$mainMod, E, exec, $fileManager"
                 "$mainMod, V, togglefloating,"
-                "$mainMod, R, exec, $menu"
+                "$mainMod, D, exec, $menu"
                 "$mainMod, S, exec, $screenshot"
+                ", PRINT, exec, $screenshot_whole"
                 "$mainMod&SHIFT_L&CTRL_L, L, exec, $lock"
                 "$mainMod, H, movefocus, l"
                 "$mainMod, L, movefocus, r"
