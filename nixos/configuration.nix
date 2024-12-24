@@ -107,7 +107,7 @@
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    nerd-fonts.jetbrains-mono
   ];
 
   fonts.fontconfig = {
@@ -149,8 +149,8 @@
 
   # Open ports in the firewall.
   networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [ 8000 ];
+    enable = false;
+    allowedTCPPorts = [ 8000 4444 ];
   };
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.

@@ -23,9 +23,7 @@
             color14 = "#c1e3e5";
             color15 = "#dcd7d7";
         };
-        font.package = pkgs.nerdfonts.override {
-            fonts = [ "JetBrainsMono" ];
-        };
+        # font.package = pkgs.nerd-fonts.jetbrains-mono;
         font.name = "JetBrains Mono Nerd Font";
         font.size = 18;
     };

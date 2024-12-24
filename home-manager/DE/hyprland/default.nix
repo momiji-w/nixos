@@ -60,10 +60,10 @@
                 active_opacity = 1.0;
                 inactive_opacity = 1.0;
 
-                drop_shadow = true;
-                shadow_range = 4;
-                shadow_render_power = 3;
-                "col.shadow" = "rgba(1a1a1aee)";
+                # drop_shadow = true;
+                # shadow_range = 4;
+                # shadow_render_power = 3;
+                # "col.shadow" = "rgba(1a1a1aee)";
                 blur = {
                     enabled = true;
                     size = 3;
@@ -112,6 +112,7 @@
                 "$mainMod, V, togglefloating,"
                 "$mainMod, D, exec, $menu"
                 "$mainMod, S, exec, $screenshot"
+                "$mainMod, T, togglegroup"
                 ", PRINT, exec, $screenshot_whole"
                 "$mainMod&SHIFT_L&CTRL_L, L, exec, $lock"
                 "$mainMod, H, movefocus, l"

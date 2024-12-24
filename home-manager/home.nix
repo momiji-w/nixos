@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
     imports = [ 
@@ -32,12 +32,16 @@
     };
 
     home.packages = with pkgs; [
+		alacritty
         kitty
         firefox
+        qutebrowser
         wget
         koodo-reader
         lf
+        fd
         ncspot
+        gimp
 
         pamixer
         pavucontrol
@@ -56,7 +60,9 @@
         nodejs_22
         android-tools
         scrcpy
-    ];
+    ] ++ [
+		inputs.hypr-qtutils.packages.x86_64-linux.default
+	];
 
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;

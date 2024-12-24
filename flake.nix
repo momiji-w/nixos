@@ -1,4 +1,7 @@
 {
+  # Very useful guide
+  # https://vtimofeenko.com/posts/practical-nix-flake-anatomy-a-guided-tour-of-flake.nix/#packages
+
   description = "momiji's nixos flakes";
 
   inputs = {
@@ -11,12 +14,15 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+	
+	hypr-qtutils.url = "github:hyprwm/hyprland-qtutils";
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+	hypr-qtutils,
     ...
   } @ inputs: let
     inherit (self) outputs;
