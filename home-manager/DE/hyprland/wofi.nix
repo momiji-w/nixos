@@ -1,9 +1,7 @@
-{ pkgs, ... }:
-
 {
-    programs.wofi = {
-        enable = true;
-        style = ''
+  programs.wofi = {
+    enable = true;
+    style = ''
 * {
     font-size: 18px;
 }
@@ -59,6 +57,6 @@ window {
 #entry:selected #text {
     font-weight: bold;
 }
-        '';
-    };
+    '';
+  };
 }

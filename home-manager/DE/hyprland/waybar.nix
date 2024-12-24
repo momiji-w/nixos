@@ -1,50 +1,50 @@
 {
-    programs.waybar = {
-        enable = true;
-        settings = {
-            mainBar = {
-                position = "bottom";
-                modules-left = ["hyprland/workspaces"];
-                # modules-center = ["hyprland/window"];
-                modules-right = ["network" "custom/bar" "battery" "custom/bar" "clock"];
+  programs.waybar = {
+    enable = true;
+    settings = {
+      mainBar = {
+        position = "bottom";
+        modules-left = ["hyprland/workspaces"];
+        # modules-center = ["hyprland/window"];
+        modules-right = ["network" "custom/bar" "battery" "custom/bar" "clock"];
 
-                tray = {
-                    icon-size = 21;
-                    spacing = 10;
-                };
-                clock = {
-                    format = "{:%Y-%m-%d %I:%M %p}";
-                };
-                backlight = {
-                    format = "{percent}% ";
-                    format-icons = ["" ""];
-                };
-                battery = {
-                    states = {
-                        good = 95;
-                        warning = 30;
-                        critical = 15;
-                    };
-                    format = "  {capacity}% ";
-                    format-charging = "󱐋 {capacity}%";
-                    format-plugged = "  {capacity}%";
-                };
-                "battery#bat2" = {
-                    bat = "BAT2";
-                };
-                network = {
-                    format-wifi = "{essid} ({signalStrength}%)";
-                    format-ethernet = "{ifname}: {ipaddr}/{cidr}";
-                    format-linked = "{ifname} (No IP)";
-                    format-disconnected = "Disconnected";
-                    format-alt = "{ifname}: {ipaddr}/{cidr}";
-                };
-                "custom/bar" = {
-                    format = " | ";
-                };
-            };
+        tray = {
+          icon-size = 21;
+          spacing = 10;
         };
-        style = ''
+        clock = {
+          format = "{:%Y-%m-%d %I:%M %p}";
+        };
+        backlight = {
+          format = "{percent}% ";
+          format-icons = ["" ""];
+        };
+        battery = {
+          states = {
+            good = 95;
+            warning = 30;
+            critical = 15;
+          };
+          format = "  {capacity}% ";
+          format-charging = "󱐋 {capacity}%";
+          format-plugged = "  {capacity}%";
+        };
+        "battery#bat2" = {
+          bat = "BAT2";
+        };
+        network = {
+          format-wifi = "{essid} ({signalStrength}%)";
+          format-ethernet = "{ifname}: {ipaddr}/{cidr}";
+          format-linked = "{ifname} (No IP)";
+          format-disconnected = "Disconnected";
+          format-alt = "{ifname}: {ipaddr}/{cidr}";
+        };
+        "custom/bar" = {
+          format = " | ";
+        };
+      };
+  };
+    style = ''
 * {
     border: none;
     border-radius: 0px;
@@ -133,6 +133,6 @@ window#waybar {
 #network.disconnected {
     background-color: #f53c3c;
 }
-'';
-    };
+    '';
+  };
 }

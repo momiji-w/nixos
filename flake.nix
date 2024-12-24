@@ -22,7 +22,7 @@
     self,
     nixpkgs,
     home-manager,
-	hypr-qtutils,
+    hypr-qtutils,
     ...
   } @ inputs: let
     inherit (self) outputs;
