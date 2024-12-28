@@ -1,9 +1,14 @@
 { pkgs, inputs, ... }:
 
-{
+let
+  momiji-nixvim = inputs.momiji-nixvim.packages.x86_64-linux.default;
+  nixvim = momiji-nixvim.extend {
+    viAlias = true;
+    vimAlias = true;
+  };
+in {
   imports = [ 
     ./DE
-    ./nixvim
     ./git
     ./pass
     ./kitty
@@ -37,6 +42,7 @@
     firefox
     qutebrowser
     wget
+    xdg-utils
     koodo-reader
     lf
     fd
@@ -46,7 +52,7 @@
     pamixer
     pavucontrol
     xfce.thunar
-    htop
+    btop
     pfetch
 
     p7zip
@@ -57,11 +63,12 @@
 
     python311
     go
-    nodejs_22
     android-tools
     scrcpy
   ] ++ [
     inputs.hypr-qtutils.packages.x86_64-linux.default
+    inputs.ghostty.packages.x86_64-linux.default
+    nixvim
   ];
 
   programs.home-manager.enable = true;

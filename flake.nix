@@ -10,12 +10,13 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
+    momiji-nixvim = {
+      url = "github:momiji-w/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 	
-	hypr-qtutils.url = "github:hyprwm/hyprland-qtutils";
+    hypr-qtutils.url = "github:hyprwm/hyprland-qtutils";
+    ghostty.url = "github:ghostty-org/ghostty";
   };
 
   outputs = {
@@ -23,6 +24,7 @@
     nixpkgs,
     home-manager,
     hypr-qtutils,
+    ghostty,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -41,7 +43,7 @@
         # > Our main home-manager configuration file <
         modules = [
           ./home-manager/home.nix
-          inputs.nixvim.homeManagerModules.nixvim
+          # inputs.nixvim.homeManagerModules.nixvim
         ];
       };
     };
