@@ -96,6 +96,7 @@
       };
       "$mainMod" = "SUPER";
       "$screenshot" = "hyprshot -m region --clipboard-only";
+      "$screenshot_edit" = "hyprshot -m region -raw | swappy -f -";
       "$screenshot_whole" = "hyprshot -m output -o ~/Screenshots";
       "$lock" = "hyprlock";
       bind = [
@@ -107,8 +108,9 @@
         "$mainMod, V, togglefloating,"
         "$mainMod, D, exec, $menu"
         "$mainMod, S, exec, $screenshot"
-        "$mainMod, T, togglegroup"
+        "$mainMod&SHIFT_L, S, exec, $screenshot_edit"
         ", PRINT, exec, $screenshot_whole"
+        "$mainMod, T, togglegroup"
         "$mainMod&SHIFT_L&CTRL_L, L, exec, $lock"
         "$mainMod, H, movefocus, l"
         "$mainMod, L, movefocus, r"

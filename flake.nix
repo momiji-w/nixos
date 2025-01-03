@@ -43,7 +43,6 @@
         # > Our main home-manager configuration file <
         modules = [
           ./home-manager/home.nix
-          # inputs.nixvim.homeManagerModules.nixvim
         ];
       };
     };

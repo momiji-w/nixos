@@ -6,6 +6,8 @@ let
     viAlias = true;
     vimAlias = true;
   };
+  hypr-qtutils = inputs.hypr-qtutils.packages.x86_64-linux.default;
+  # ghostty = inputs.ghostty.packages.x86_64-linux.default;
 in {
   imports = [ 
     ./DE
@@ -66,8 +68,8 @@ in {
     android-tools
     scrcpy
   ] ++ [
-    inputs.hypr-qtutils.packages.x86_64-linux.default
-    inputs.ghostty.packages.x86_64-linux.default
+    hypr-qtutils
+    # ghostty
     nixvim
   ];
 
