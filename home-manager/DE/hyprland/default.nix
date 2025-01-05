@@ -1,13 +1,9 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ./waybar.nix
-    ./hyprpaper.nix
-    ./wofi.nix
-  ];
+  imports = [ ../hyprlock ./waybar.nix ./hyprpaper.nix ./wofi.nix ];
 
-  home.packages = with pkgs; [ 
+  home.packages = with pkgs; [
     swaynotificationcenter
     hyprlock
     hyprshot
@@ -30,17 +26,18 @@
     enable = true;
     xwayland.enable = true;
     settings = {
-      monitor = [ "eDP-1, 1920x1080@144, auto, 1" ", preferred, auto, 1, mirror, eDP-1" ];
-      xwayland = {
-        force_zero_scaling = true;
-      };
+      monitor = [
+        "eDP-1, 1920x1080@144, auto, 1"
+        ", preferred, auto, 1, mirror, eDP-1"
+      ];
+      xwayland = { force_zero_scaling = true; };
 
       "$terminal" = "kitty";
       "$fileManager" = "thunar";
       "$menu" = "wofi --show drun";
 
       exec-once = [ "waybar" "hyprpaper" "swaync" ];
-      general = { 
+      general = {
         gaps_in = 0;
         gaps_out = 0;
 
@@ -68,14 +65,12 @@
         };
       };
 
-      animations = {
-        enabled = false;
-      };
+      animations = { enabled = false; };
       dwindle = {
         pseudotile = true;
         preserve_split = true;
       };
-      misc = { 
+      misc = {
         force_default_wallpaper = 0;
         disable_hyprland_logo = true;
       };
@@ -87,13 +82,9 @@
 
         sensitivity = 0;
 
-        touchpad = {
-          natural_scroll = true;
-        };
+        touchpad = { natural_scroll = true; };
       };
-      gestures = {
-        workspace_swipe = false;
-      };
+      gestures = { workspace_swipe = false; };
       "$mainMod" = "SUPER";
       "$screenshot" = "hyprshot -m region --clipboard-only";
       "$screenshot_edit" = "hyprshot -m region -raw | swappy -f -";

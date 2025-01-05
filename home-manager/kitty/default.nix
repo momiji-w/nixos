@@ -2,7 +2,7 @@
   programs.kitty = {
     enable = true;
     settings = {
-      background_opacity = 0.90;
+      background_opacity = 0.95;
       enable_audio_bell = false;
       # color0 = "#242829";
       # color1 = "#ff4383";

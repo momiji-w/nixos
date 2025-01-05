@@ -14,37 +14,28 @@
       url = "github:momiji-w/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-	
+
     hypr-qtutils.url = "github:hyprwm/hyprland-qtutils";
-    ghostty.url = "github:ghostty-org/ghostty";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    hypr-qtutils,
-    ghostty,
-    ...
-  } @ inputs: let
-    inherit (self) outputs;
-  in {
-    nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        # > Our main nixos configuration file <
-        modules = [./nixos/configuration.nix];
+  outputs = { self, nixpkgs, home-manager, hypr-qtutils, ... }@inputs:
+    let inherit (self) outputs;
+    in {
+      nixosConfigurations = {
+        nixos = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          # > Our main nixos configuration file <
+          modules = [ ./nixos/configuration.nix ];
+        };
+      };
+      homeConfigurations = {
+        "momiji@nixos" = home-manager.lib.homeManagerConfiguration {
+          pkgs =
+            nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          extraSpecialArgs = { inherit inputs outputs; };
+          # > Our main home-manager configuration file <
+          modules = [ ./home-manager/home.nix ];
+        };
       };
     };
-    homeConfigurations = {
-      "momiji@nixos" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
-        # > Our main home-manager configuration file <
-        modules = [
-          ./home-manager/home.nix
-        ];
-      };
-    };
-  };
 }

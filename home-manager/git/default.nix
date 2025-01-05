@@ -3,11 +3,9 @@
 {
   programs.git = {
     enable = true;
-    userName  = "momiji";
+    userName = "momiji";
     userEmail = "anouluck.many@gmail.com";
   };
 
-  home.packages = with pkgs; [
-    lazygit
-  ];
+  home.packages = with pkgs; [ lazygit ];
 }
