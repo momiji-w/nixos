@@ -7,7 +7,7 @@
       }
       window {
           margin: 0px;
-          border: 1px solid #39c5bb;
+          border: 1px solid #ffffff;
           background-color: #242829;
       }
 

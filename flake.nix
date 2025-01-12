@@ -14,11 +14,9 @@
       url = "github:momiji-w/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    hypr-qtutils.url = "github:hyprwm/hyprland-qtutils";
   };
 
-  outputs = { self, nixpkgs, home-manager, hypr-qtutils, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let inherit (self) outputs;
     in {
       nixosConfigurations = {

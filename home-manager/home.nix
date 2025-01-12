@@ -2,7 +2,6 @@
 
 let
   nixvim = inputs.momiji-nixvim.packages.x86_64-linux.default;
-  hypr-qtutils = inputs.hypr-qtutils.packages.x86_64-linux.default;
   cli-packages = with pkgs; [
     ncspot
     pamixer
@@ -16,7 +15,6 @@ let
     wget
     xdg-utils
     lf
-    fd
 
     python311
     go
@@ -37,7 +35,7 @@ let
     pavucontrol
     xfce.thunar
   ];
-  flake-packages = [ hypr-qtutils nixvim ];
+  flake-packages = [ nixvim ];
 in {
   imports = [ ./DE ./git ./pass ./kitty ./tmux ./fish ];
 

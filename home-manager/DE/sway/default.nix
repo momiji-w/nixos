@@ -21,6 +21,8 @@
     };
   };
 
+  services.swaync.enable = true;
+
   wayland.windowManager.sway = {
     enable = true;
     systemd.enable = true;
@@ -29,7 +31,6 @@
       terminal = "kitty";
       menu = "wofi --show drun";
       defaultWorkspace = "workspace number 1";
-      startup = [{ command = "exec swaync"; }];
       keybindings =
         let modifier = config.wayland.windowManager.sway.config.modifier;
         in lib.mkOptionDefault {
@@ -37,7 +38,6 @@
           "${modifier}+Shift+n" =
             "exec adb shell am start -a android.intent.action.VIEW -d $(wl-paste)";
           "${modifier}+Shift+s" = "exec hyprshot -m region --clipboard-only";
-          "${modifier}+Shift+m" = "exec sway exit";
         };
       input = {
         "type:touchpad" = {

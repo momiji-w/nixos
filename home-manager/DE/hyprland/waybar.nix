@@ -70,11 +70,11 @@
 
       /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
       #workspaces button:hover {
-          box-shadow: inset 0 -3px #39c5bb;
+          box-shadow: inset 0 -3px #ffffff;
       }
 
       #workspaces button.active {
-          box-shadow: inset 0 -3px #39c5bb;
+          box-shadow: inset 0 -3px #ffffff;
       }
 
       #clock,

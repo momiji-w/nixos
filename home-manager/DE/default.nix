@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./sway ];
+  imports = [ ./hyprland ];
 
   gtk = {
     enable = true;

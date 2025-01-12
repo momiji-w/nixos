@@ -3,11 +3,9 @@
     enable = true;
     settings = {
       preload = [
-        "~/Downloads/mikyu.png"
-        "~/Downloads/miku_pixel.jpg"
-        "~/Downloads/cool_sana.jpg"
+        "~/wallpapers/faun.jpg"
       ];
-      wallpaper = [ ", ~/Downloads/mikyu.png" ];
+      wallpaper = [ ", ~/wallpapers/faun.jpg" ];
     };
   };
 }

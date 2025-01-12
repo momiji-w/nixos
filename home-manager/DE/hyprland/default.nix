@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [ ../hyprlock ./waybar.nix ./hyprpaper.nix ./wofi.nix ];
+  imports = [ ./hyprlock.nix ./waybar.nix ./hyprpaper.nix ./wofi.nix ];
 
   home.packages = with pkgs; [
     swaynotificationcenter
@@ -9,6 +9,8 @@
     hyprshot
     wl-clipboard
     xwayland
+    hyprutils
+    swappy
   ];
 
   home = {
@@ -41,10 +43,10 @@
         gaps_in = 0;
         gaps_out = 0;
 
-        border_size = 2;
+        border_size = 1;
 
-        "col.active_border" = "rgb(39c5bb)";
-        "col.inactive_border" = "rgba(595959aa)";
+        # "col.active_border" = "rgb(ffd1dc)";
+        # "col.inactive_border" = "rgba(595959aa)";
 
         resize_on_border = false;
         allow_tearing = false;
@@ -92,7 +94,7 @@
       "$lock" = "hyprlock";
       bind = [
         "$mainMod, Return, exec, $terminal"
-        "$mainMod, Q, killactive,"
+        "$mainMod&SHIFT_L, Q, killactive,"
         "$mainMod, F, fullscreen,"
         "$mainMod&SHIFT_L, M, exit,"
         "$mainMod, E, exec, $fileManager"
