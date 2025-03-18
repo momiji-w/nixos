@@ -25,6 +25,9 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     kernelPackages = pkgs.linuxPackages_zen;
+    kernelParams = [
+      "usbcore.autosuspend=-1"
+    ];
   };
 
   services = {
@@ -36,10 +39,25 @@
       pulse.enable = true;
     };
 
+    xserver = {
+      enable = true;
+      windowManager.i3.enable = true;
+    };
+
+    displayManager = {
+      defaultSession = "none+i3";
+      ly.enable = true;
+    };
+
     # Enable touchpad support (enabled default in most desktopManager).
     libinput = { enable = true; };
 
     seatd = { enable = true; };
+
+    # vial firmware udev rule
+    udev.extraRules = ''
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
+    '';
 
     # auto-cpufreq
     auto-cpufreq = {
@@ -132,8 +150,17 @@
   users.users.momiji = {
     shell = pkgs.fish;
     isNormalUser = true;
-    extraGroups =
-      [ "seat" "adbusers" "video" "networkmanager" "libvirtd" "wheel" ];
+    extraGroups = [
+      "users"
+      "seat"
+      "adbusers"
+      "kvm"
+      "video"
+      "networkmanager"
+      "libvirtd"
+      "wheel"
+      "uinput"
+    ];
   };
 
   # List packages installed in system profile. To search, run:

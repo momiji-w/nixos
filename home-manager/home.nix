@@ -7,6 +7,8 @@ let
     pamixer
     btop
     pfetch
+    slides
+    vial
 
     p7zip
     fzf
@@ -23,33 +25,35 @@ let
   ];
   gui-packages = with pkgs; [
     firefox
+    ungoogled-chromium
     qutebrowser
+    luakit
 
     alacritty
-    kitty
 
     koodo-reader
     gimp
     loupe
+    abiword
 
     pavucontrol
     xfce.thunar
+    blueman
+    burpsuite
+    thunderbird
+
+    osu-lazer-bin
+    river
   ];
   flake-packages = [ nixvim ];
 in {
-  imports = [ ./DE ./git ./pass ./kitty ./tmux ./fish ];
+  imports = [ ./DE ./git ./pass ./tmux ./fish ./kitty ];
 
   home.username = "momiji";
   home.homeDirectory = "/home/momiji";
   home.stateVersion = "24.05";
 
   nixpkgs.config.allowUnfree = true;
-
-  xdg.portal = {
-    enable = true;
-    config = { common = { default = [ "wlr" ]; }; };
-    extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
-  };
 
   programs.direnv.enable = true;
 

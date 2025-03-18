@@ -13,6 +13,12 @@
     swappy
   ];
 
+  xdg.portal = {
+    enable = true;
+    config = { common = { default = [ "wlr" ]; }; };
+    extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
+  };
+
   home = {
     sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";
@@ -27,11 +33,11 @@
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
+    plugins = with pkgs.hyprlandPlugins; [ hy3 ];
+
     settings = {
-      monitor = [
-        "eDP-1, 1920x1080@144, auto, 1"
-        ", preferred, auto, 1, mirror, eDP-1"
-      ];
+      monitor =
+        [ "eDP-1, 1920x1080@144, auto, 1" ", highrr, auto, 1, mirror, eDP-1" ];
       xwayland = { force_zero_scaling = true; };
 
       "$terminal" = "kitty";
@@ -50,7 +56,7 @@
 
         resize_on_border = false;
         allow_tearing = false;
-        layout = "dwindle";
+        layout = "hy3";
       };
 
       decoration = {
@@ -92,6 +98,21 @@
       "$screenshot_edit" = "hyprshot -m region -raw | swappy -f -";
       "$screenshot_whole" = "hyprshot -m output -o ~/Screenshots";
       "$lock" = "hyprlock";
+      plugin = {
+        hy3 = {
+          tabs = {
+            height = 12;
+            boarder_width = 1;
+            render_text = false;
+            "col.active" = "rgba(33ccff20)";
+            "col.active.border" = "rgba(33ccffee)";
+            "col.inactive" = "rgba(30303020)";
+            "col.inactive.border" = "rgba(595959aa)";
+            "col.urgent" = "rgba(ff2233ee)";
+            "col.urgent.border" = "rgba(ff2233ee)";
+          };
+        };
+      };
       bind = [
         "$mainMod, Return, exec, $terminal"
         "$mainMod&SHIFT_L, Q, killactive,"
@@ -103,16 +124,20 @@
         "$mainMod, S, exec, $screenshot"
         "$mainMod&SHIFT_L, S, exec, $screenshot_edit"
         ", PRINT, exec, $screenshot_whole"
-        "$mainMod, T, togglegroup"
+        "$mainMod, T, hy3:makegroup, tab"
         "$mainMod&SHIFT_L&CTRL_L, L, exec, $lock"
-        "$mainMod, H, movefocus, l"
-        "$mainMod, L, movefocus, r"
-        "$mainMod, K, movefocus, u"
-        "$mainMod, J, movefocus, d"
-        "$mainMod&SHIFT_L, H, movewindow, l"
-        "$mainMod&SHIFT_L, L, movewindow, r"
-        "$mainMod&SHIFT_L, K, movewindow, u"
-        "$mainMod&SHIFT_L, J, movewindow, d"
+        "$mainMod, H, hy3:movefocus, l"
+        "$mainMod, L, hy3:movefocus, r"
+        "$mainMod, K, hy3:movefocus, u"
+        "$mainMod, J, hy3:movefocus, d"
+        "$mainMod&SHIFT_L, H, hy3:movewindow, l"
+        "$mainMod&SHIFT_L, L, hy3:movewindow, r"
+        "$mainMod&SHIFT_L, K, hy3:movewindow, u"
+        "$mainMod&SHIFT_L, J, hy3:movewindow, d"
+        "$mainMod&CTRL_L, H, resizeactive, -30 0"
+        "$mainMod&CTRL_L, L, resizeactive, 30 0"
+        "$mainMod&CTRL_L, K, resizeactive, 0 -30"
+        "$mainMod&CTRL_L, J, resizeactive, 0 30"
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
         "$mainMod, 3, workspace, 3"
