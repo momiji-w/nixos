@@ -21,7 +21,7 @@
       defaultWorkspace = "workspace number 1";
 
       startup = [
-        { command = "xss-lock --transfer-sleep-lock -- i3lock-fancy --nofork"; }
+        # { command = "xss-lock --transfer-sleep-lock -- i3lock-fancy --nofork"; }
         { command = "feh --bg-fill /home/momiji/wallpapers/nimi.jpg"; }
         { command = "xset s off"; }
         { command = "xset -dmps"; }

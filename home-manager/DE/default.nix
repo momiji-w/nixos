@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./i3 ];
+  imports = [ ./hyprland ];
 
   gtk = {
     enable = true;
