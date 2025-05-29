@@ -1,7 +1,7 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 let
-  nixvim = inputs.momiji-nixvim.packages.x86_64-linux.default;
+  # nixvim = inputs.momiji-nixvim.packages.x86_64-linux.default;
   cli-packages = with pkgs; [
     ncspot
     pamixer
@@ -22,6 +22,7 @@ let
     go
     android-tools
     scrcpy
+    dconf
   ];
   gui-packages = with pkgs; [
     firefox
@@ -45,12 +46,12 @@ let
     osu-lazer-bin
     river
   ];
-  flake-packages = [ nixvim ];
+  flake-packages = [ ];
 in {
   imports = [ ./DE ./git ./pass ./tmux ./fish ./kitty ];
 
-  home.username = "momiji";
-  home.homeDirectory = "/home/momiji";
+  # home.username = "momiji";
+  # home.homeDirectory = "/home/momiji";
   home.stateVersion = "24.05";
 
   nixpkgs.config.allowUnfree = true;
@@ -59,5 +60,5 @@ in {
 
   home.packages = cli-packages ++ gui-packages ++ flake-packages;
 
-  programs.home-manager.enable = true;
+  # programs.home-manager.enable = true;
 }

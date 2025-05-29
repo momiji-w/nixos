@@ -7,6 +7,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
+
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -20,14 +22,28 @@
     let inherit (self) outputs;
     in {
       nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
+        home = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
-          # > Our main nixos configuration file <
-          modules = [ ./nixos/configuration.nix ];
+          modules = [ ./hosts/home/configuration.nix ];
         };
+        work = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [ ./hosts/work/configuration.nix ];
+	};
       };
       homeConfigurations = {
         "momiji@nixos" = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
+            config = {
+              allowUnfree = true;
+            };
+            system = "x86_64-linux";
+          };
+          extraSpecialArgs = { inherit inputs outputs; };
+          # > Our main home-manager configuration file <
+          modules = [ ./home-manager/home.nix ];
+        };
+        "momiji@CBR-NB010" = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
             config = {
               allowUnfree = true;

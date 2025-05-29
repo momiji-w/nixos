@@ -4,9 +4,10 @@
     settings = {
       preload = [
         # https://x.com/Chisai_Sai/status/1880412163405410467
-        "~/wallpapers/nimi.jpg"
+        # "~/wallpapers/nimi.jpg"
+        "~/wallpapers/lunar-tear.png"
       ];
-      wallpaper = [ ", ~/wallpapers/nimi.jpg" ];
+      wallpaper = [ ", ~/wallpapers/lunar-tear.png" ];
     };
   };
 }

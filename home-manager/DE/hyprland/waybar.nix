@@ -5,6 +5,44 @@
       mainBar = {
         position = "bottom";
         modules-left = [ "hyprland/workspaces" ];
+        output = [ "eDP-1" ];
+        # modules-center = ["hyprland/window"];
+        modules-right =
+          [ "network" "custom/bar" "battery" "custom/bar" "clock" ];
+
+        tray = {
+          icon-size = 21;
+          spacing = 10;
+        };
+        clock = { format = "{:%Y-%m-%d %I:%M %p}"; };
+        backlight = {
+          format = "{percent}% ";
+          format-icons = [ "" "" ];
+        };
+        battery = {
+          states = {
+            good = 95;
+            warning = 30;
+            critical = 15;
+          };
+          format = "  {capacity}% ";
+          format-charging = "󱐋 {capacity}%";
+          format-plugged = "  {capacity}%";
+        };
+        "battery#bat2" = { bat = "BAT2"; };
+        network = {
+          format-wifi = "{essid} ({signalStrength}%)";
+          format-ethernet = "{ifname}: {ipaddr}/{cidr}";
+          format-linked = "{ifname} (No IP)";
+          format-disconnected = "Disconnected";
+          format-alt = "{ifname}: {ipaddr}/{cidr}";
+        };
+        "custom/bar" = { format = " | "; };
+      };
+      subBar = {
+        position = "bottom";
+        modules-left = [ "hyprland/workspaces" ];
+        output = [ "HDMI-A-1" ];
         # modules-center = ["hyprland/window"];
         modules-right =
           [ "network" "custom/bar" "battery" "custom/bar" "clock" ];
