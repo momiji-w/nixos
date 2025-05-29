@@ -1,8 +1,17 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
+let
+  home-manager = builtins.fetchTarball {
+    url = "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+    sha256 = "1cycc5w4ypcc2y6yi53as38bqaa1xrss0kxsyaf2shi82dvywsdq";
+  };
+  nixvim = inputs.momiji-nixvim.packages.x86_64-linux.default;
+  zen = inputs.zen-browser.packages.x86_64-linux.default;
+in
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    (import "${home-manager}/nixos")
   ];
 
   nix = {
@@ -28,6 +37,11 @@
     kernelParams = [
       "usbcore.autosuspend=-1"
     ];
+  };
+
+  home-manager.users.momiji = {
+    imports = [ ../../home-manager/home.nix ];
+    home.packages = [ nixvim zen ];
   };
 
   services = {
